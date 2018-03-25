@@ -30,7 +30,7 @@ module AWS
       include RegionDetection
 
       def initialize(options = {})
-        super(options.merge(:http_continue_threshold => 0))
+        super
       end
 
       signature_version :S3

@@ -52,7 +52,7 @@ module AWS
 
         request.headers.clear
         request.headers['host'] = request.host
-        signed_headers = 'Host'
+        signed_headers = 'host'
 
         if options[:acl]
           request.add_param("x-amz-acl", options[:acl].to_s.gsub(/_/, '-'))

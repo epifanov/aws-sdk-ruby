@@ -51,8 +51,13 @@ module AWS
         request = build_request(method, options)
 
         request.headers.clear
-        host = [request.host, request.port].join(':')
-        request.headers['host'] = host
+
+        if [80, 443].include?(request.port)
+          request.headers['host'] = request.host
+        else
+          request.headers['host'] = [request.host, request.port].join(':')
+        end
+
         signed_headers = 'host'
 
         if options[:acl]

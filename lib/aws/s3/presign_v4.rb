@@ -52,7 +52,7 @@ module AWS
 
         request.headers.clear
 
-        if [80, 443].include?(request.port)
+        if [80, 443].include?(request.port.to_i)
           request.headers['host'] = request.host
         else
           request.headers['host'] = [request.host, request.port].join(':')
